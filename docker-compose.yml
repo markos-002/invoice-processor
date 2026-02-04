@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  invoice-processor:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: invoice-processor
+    ports:
+      - "8080:8080"
+    env_file:
+      - .env
+    environment:
+      - PORT=8080
+    volumes:
+      # Optional: Mount logs directory for persistence
+      - ./backend/logs:/app/backend/logs
+      # Optional: Mount uploads directory
+      - ./backend/tmp/uploads:/app/backend/tmp/uploads
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
