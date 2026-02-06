@@ -21,23 +21,8 @@ export function Navigation() {
   const [notificationsOpen, setNotificationsOpen] = useState(false);
   const [notificationCount, setNotificationCount] = useState(0);
 
-  // useEffect(() => {
-  //   async function fetchNotificationCount() {
-  //     try {
-  //       const supabase = createSupabaseBrowserClient();
-        
-  //       // Count invoices that need review
-  //       const { count, error } = await supabase
-  //         .from("invoices")
-  //         .select("*", { count: "exact", head: true })
-  //         .eq("status", "needs_review");
 
-  //       if (error) throw error;
-  //       setNotificationCount(count || 0);
-  //     } catch (err) {
-  //       console.error("Error fetching notification count:", err);
-  //     }
-  //   }
+
 
   //   fetchNotificationCount();
     
